@@ -112,9 +112,12 @@
             <p id="result-text" class="text-2xl mb-2">あなたの正解率は...</p>
             <p id="score-percentage" class="text-6xl font-bold text-blue-600 mb-6"></p>
             <p id="score-details" class="text-lg text-gray-700 mb-8"></p>
-            <div class="flex justify-center gap-4">
+            <div class="flex flex-wrap justify-center gap-4">
                 <button id="restart-quiz-btn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-blue-700 transition-colors duration-300">
                     もう一度挑戦
+                </button>
+                <button id="retry-incorrect-btn" class="hidden bg-orange-500 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-orange-600 transition-colors duration-300">
+                    間違えた問題だけ解きなおす
                 </button>
                 <button id="change-chapter-btn" class="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-lg text-lg hover:bg-gray-300 transition-colors duration-300">
                     別の章を学習
@@ -153,151 +156,151 @@
             { chapter: 1, question: "近年、128ビットで構成されるIPアドレス(IPv6)が利用されるようになった主な理由は何か。", type: "choice", options: ["有線LANだけでなく無線LANに対応するため。", "大容量データの送受信に対応するため。", "インターネットに直接接続する機器の増加に対応するため。", "漢字など英数字以外の文字で表されるため。"], answer: "インターネットに直接接続する機器の増加に対応するため。" },
             
             // chapter 2 (30問)
-            { chapter: 2, question: "人工知能(AI)とはどのような技術を指すか。 [cite: 43, 50]", type: "choice", options: ["コンピュータシステムが人間の知的活動を模倣する技術", "電子機器やロボットを自律的に動作・機能させる技術", "インターネット上の情報を検索する技術", "電子機器やロボットを遠隔で監視したり操作したりするための技術"], answer: "コンピュータシステムが人間の知的活動を模倣する技術" },
-            { chapter: 2, question: "1946年に完成し、世界初の汎用電子計算機として知られるコンピュータの名前をアルファベット5文字で答えよ。 [cite: 43, 50]", type: "text", answer: "ENIAC" },
-            { chapter: 2, question: "強い AI (Strong AI) の特徴として、最も不適切なものを1つ選べ。 [cite: 43, 50]", type: "choice", options: ["人間のような意識や主観的経験を持つと考えられている。", "物理的なボディを持ち、それを通じて現実世界と相互作用できる。", "幅広い領域での知的タスクに対応できる総合的な知性を備えている。", "現時点では実現していないというのが一般的な専門家の認識である。"], answer: "物理的なボディを持ち、それを通じて現実世界と相互作用できる。" },
-            { chapter: 2, question: "弱い AI (Weak AI) の例として最も適切なものを答えよ。 [cite: 43, 50]", type: "choice", options: ["SiriやGoogleアシスタントのような音声認識AI", "自律的な意思決定を行い、自己意識を持つAI", "地球外の惑星での生命体の探索を行うAI", "人間の脳と同じ仕組みで学習する AI"], answer: "SiriやGoogleアシスタントのような音声認識AI" },
-            { chapter: 2, question: "ChatGPTやGeminiは、強いAIと弱いAIのどちらに属するか。 [cite: 43, 50]", type: "choice", options: ["強いAI", "弱いAI"], answer: "弱いAI" },
-            { chapter: 2, question: "ジョン・サールの思考実験「中国語の部屋」が問いかけていることは何か。 [cite: 43, 50]", type: "choice", options: ["コンピュータが複雑な言語タスクを実行できるかどうか。", "コンピュータが複雑な言語タスクを実行する際に、人間と同じような「理解」や「意識」を持ち得るかどうか。", "言語の意味は構文から独立して理解できるかどうか。", "人間の思考とコンピュータの処理はどのように違うか。"], answer: "コンピュータが複雑な言語タスクを実行する際に、人間と同じような「理解」や「意識」を持ち得るかどうか。" },
-            { chapter: 2, question: "思考実験「中国語の部屋」において、部屋のなかの人が持っているものは何か。 [cite: 44, 51]", type: "choice", options: ["中英辞書と英中辞書", "中国語を理解するための教材", "英語の指示が書かれた本", "中国語の教師"], answer: "英語の指示が書かれた本" },
-            { chapter: 2, question: "思考実験「中国語の部屋」において、部屋のなかの人が行っている行為はどれか。 [cite: 44, 51]", type: "choice", options: ["中国語を勉強し、理解すること。", "中国語の質問を英語に翻訳すること。", "中国語の質問に直感的に回答すること。", "指示に従い、中国語の回答をすること。"], answer: "指示に従い、中国語の回答をすること。" },
-            { chapter: 2, question: "予防保全とは何か。 [cite: 44, 51]", type: "choice", options: ["既に発生した問題に対処するための措置を講じること。", "問題が発生する可能性がある状況を完全に排除すること。", "事前に危険や問題を識別し、それらが発生することを防ぐための措置を講じること。", "発生した問題の影響を最小限に抑えるために、対応策を後から計画すること。"], answer: "事前に危険や問題を識別し、それらが発生することを防ぐための措置を講じること。" },
-            { chapter: 2, question: "予防保全においてAIが期待される理由はどれか。 [cite: 44, 51]", type: "choice", options: ["AIは人間よりも低コストで利用可能であり、メンテナンスに関わる経済的負担を減らせるから。", "AIは機械の動作音を聞き分けることが得意であり、異常な音から故障を予測できるから。", "AIは大量のデータを高速に分析し、機械の状態をリアルタイムで監視し、異常や故障の兆候を早期検出することが可能であるから。", "AIは機械を自己修復する能力を持っており、故障が発生した場合には自動で修理を行なえるから。"], answer: "AIは大量のデータを高速に分析し、機械の状態をリアルタイムで監視し、異常や故障の兆候を早期検出することが可能であるから。" },
-            { chapter: 2, question: "1980年代の第二期AIブームにおいて、専門家の知識をデータベース化したAIシステムを何というか。カタカナ6文字で答えよ。 [cite: 44, 51]", type: "text", answer: "エキスパート" },
-            { chapter: 2, question: "シンボリックAIにおける「推論」とは何を意味するか。 [cite: 45, 52]", type: "choice", options: ["計算機が自ら学習するプロセス", "大量のデータからパターンを見つけ出すプロセス", "与えられたルールや事実から新たな結論を導き出すプロセス", "センサーデータから物体を認識するプロセス"], answer: "与えられたルールや事実から新たな結論を導き出すプロセス" },
-            { chapter: 2, question: "AIにおけるフレーム問題とはどのような問題か。 [cite: 45, 52]", type: "choice", options: ["AIが新しいタスクについて学習する際に必要な計算資源の量を決定する問題", "AIがタスクを遂行する際に、どの情報を重要と判断し、どの情報を無視するかを識別する問題", "AIが異なるタスク間で知識を転移させる際に生じる誤差に関する問題", "AIが自己学習を通じて自身のアルゴリズムを最適化するプロセスの困難さに関連する問題"], answer: "AIがタスクを遂行する際に、どの情報を重要と判断し、どの情報を無視するかを識別する問題" },
-            { chapter: 2, question: "汎用型AIがフレーム問題に直面するのはなぜか。 [cite: 45, 52]", type: "choice", options: ["計算能力の限界により、全ての情報を処理できないため", "感情的な要素を理解し、人間のような意思決定をする能力がないため", "特定のタスクにおいて最適なアルゴリズムを選択できないため", "任意の状況下で重要な情報と無関係な情報を区別する能力が限られているため"], answer: "任意の状況下で重要な情報と無関係な情報を区別する能力が限られているため" },
-            { chapter: 2, question: "フレーム問題を解決するための主要なアプローチはどれか。 [cite: 45, 52]", type: "choice", options: ["あらゆる状況を想定して、そこで必要な情報をAIに事前学習させる", "AIに自己修正能力を持たせ、失敗や間違いから学習させる", "コンテキスト(文脈・状況)に基づいて情報の重要性を動的に評価するメカニズムを開発する", "AIに使用するコンピュータの計算能力を強化する"], answer: "コンテキスト(文脈・状況)に基づいて情報の重要性を動的に評価するメカニズムを開発する" },
-            { chapter: 2, question: "情報通信の文脈における5Gとは何の略か。 [cite: 46, 53]", type: "choice", options: ["5th Generation Mobile Communication System", "5 Gigabytes", "5 Green Gardens", "5 Gaming Gadgets"], answer: "5th Generation Mobile Communication System" },
-            { chapter: 2, question: "IoTとは何の略か。 [cite: 46, 53]", type: "choice", options: ["Interactive Online Tools", "International Office Training", "Invasion of Titans", "Internet of Things", "Icecream Over Time"], answer: "Internet of Things" },
-            { chapter: 2, question: "ビジネスにおいてビッグデータ分析が重視される主な理由は何か。 [cite: 46, 53]", type: "choice", options: ["セキュリティ強化のため", "新しい価値の創出と意思決定のため", "広告の配信の最適化のため", "企業の社会的責任(CSR)の評価のため"], answer: "新しい価値の創出と意思決定のため" },
-            { chapter: 2, question: "ビッグデータにおける3Vは何を指すか。 [cite: 46, 53]", type: "choice", options: ["Vision, Value, Volume", "Vampire, Violin, Vacation", "Validity, Variability, Visual", "Volume, Velocity, Variety", "Velocity, Volatility, Vector"], answer: "Volume, Velocity, Variety" },
-            { chapter: 2, question: "AIとIoTとビッグデータの関係として不適切なものはどれか。 [cite: 46, 53]", type: "choice", options: ["AIはビッグデータを分析する手法を提供し、IoTはデータ供給源となる。", "ビッグデータはIoTを生成する技術である。", "AIはビッグデータを学習し、IoTデバイスのデータでリアルタイムに意思決定する。", "AIの高度な予測にはIoTデバイスから収集される膨大なデータが不可欠である。"], answer: "ビッグデータはIoTを生成する技術である。" },
-            { chapter: 2, question: "ISO8601形式「2024-04-09T19:04:00+09:00」の日本における日時はいつか。 [cite: 47, 54]", type: "text", answer: "2024年4月9日19時04分00秒" },
-            { chapter: 2, question: "通信分野でbpsとは何の略語か。 [cite: 47, 54]", type: "text", answer: "bit per second" },
-            { chapter: 2, question: "低消費電力で広範囲をカバーするIoT向け無線通信技術の総称をアルファベット4文字で答えよ。 [cite: 47, 54]", type: "text", answer: "LPWA" },
-            { chapter: 2, question: "LPWAの通信特性として不適切なものを2つ選べ。 [cite: 47, 54]", type: "multiple_choice", options: ["低消費電力", "低速", "低遅延", "低コスト", "短距離", "低頻度"], answer: ["低遅延", "短距離"] },
-            { chapter: 2, question: "Society 5.0では、Society 2.0を(①)社会、Society 4.0を(②)社会と位置付けている。①②に当てはまる語を漢字で答えよ。 [cite: 47, 54]", type: "text", answer: "①農耕, ②情報" },
-            { chapter: 2, question: "第1次産業革命は(①)化、第3次産業革命は(②)化というキーワードで説明できる。①②に当てはまる語を漢字で答えよ。 [cite: 47, 54]", type: "text", answer: "①機械, ②自動" },
-            { chapter: 2, question: "Society 5.0の文脈におけるCPSとは何の略語か。 [cite: 48, 55]", type: "choice", options: ["Creative Process Synchronization", "Consumer Privacy Security", "Cyber Physical Systems", "Consumer Privacy Security"], answer: "Cyber Physical Systems" },
-            { chapter: 2, question: "Society 5.0の文脈におけるDXとは何の略語か。 [cite: 48, 55]", type: "choice", options: ["Database Exchange", "Dynamic Experiment", "Digital Transformation", "Driving Experience", "Dimensional X-ray"], answer: "Digital Transformation" },
-            { chapter: 2, question: "ユーザーがECサイトで商品を閲覧した後、他のサイトで類似商品の広告が表示される手法を何というか。 [cite: 48, 55]", type: "text", answer: "リターゲティング広告" },
-            { chapter: 2, question: "7セグメントLEDにおいて、a～gのLEDの点灯・消灯の組み合わせは全部で何通りあるか（全消灯含む）。 [cite: 48, 56]", type: "text", answer: "128" },
+            { chapter: 2, question: "人工知能(AI)とはどのような技術を指すか。", type: "choice", options: ["コンピュータシステムが人間の知的活動を模倣する技術", "電子機器やロボットを自律的に動作・機能させる技術", "インターネット上の情報を検索する技術", "電子機器やロボットを遠隔で監視したり操作したりするための技術"], answer: "コンピュータシステムが人間の知的活動を模倣する技術" },
+            { chapter: 2, question: "1946年に完成し、世界初の汎用電子計算機として知られるコンピュータの名前をアルファベット5文字で答えよ。", type: "text", answer: "ENIAC" },
+            { chapter: 2, question: "強い AI (Strong AI) の特徴として、最も不適切なものを1つ選べ。", type: "choice", options: ["人間のような意識や主観的経験を持つと考えられている。", "物理的なボディを持ち、それを通じて現実世界と相互作用できる。", "幅広い領域での知的タスクに対応できる総合的な知性を備えている。", "現時点では実現していないというのが一般的な専門家の認識である。"], answer: "物理的なボディを持ち、それを通じて現実世界と相互作用できる。" },
+            { chapter: 2, question: "弱い AI (Weak AI) の例として最も適切なものを答えよ。", type: "choice", options: ["SiriやGoogleアシスタントのような音声認識AI", "自律的な意思決定を行い、自己意識を持つAI", "地球外の惑星での生命体の探索を行うAI", "人間の脳と同じ仕組みで学習する AI"], answer: "SiriやGoogleアシスタントのような音声認識AI" },
+            { chapter: 2, question: "ChatGPTやGeminiは、強いAIと弱いAIのどちらに属するか。", type: "choice", options: ["強いAI", "弱いAI"], answer: "弱いAI" },
+            { chapter: 2, question: "ジョン・サールの思考実験「中国語の部屋」が問いかけていることは何か。", type: "choice", options: ["コンピュータが複雑な言語タスクを実行できるかどうか。", "コンピュータが複雑な言語タスクを実行する際に、人間と同じような「理解」や「意識」を持ち得るかどうか。", "言語の意味は構文から独立して理解できるかどうか。", "人間の思考とコンピュータの処理はどのように違うか。"], answer: "コンピュータが複雑な言語タスクを実行する際に、人間と同じような「理解」や「意識」を持ち得るかどうか。" },
+            { chapter: 2, question: "思考実験「中国語の部屋」において、部屋のなかの人が持っているものは何か。", type: "choice", options: ["中英辞書と英中辞書", "中国語を理解するための教材", "英語の指示が書かれた本", "中国語の教師"], answer: "英語の指示が書かれた本" },
+            { chapter: 2, question: "思考実験「中国語の部屋」において、部屋のなかの人が行っている行為はどれか。", type: "choice", options: ["中国語を勉強し、理解すること。", "中国語の質問を英語に翻訳すること。", "中国語の質問に直感的に回答すること。", "指示に従い、中国語の回答をすること。"], answer: "指示に従い、中国語の回答をすること。" },
+            { chapter: 2, question: "予防保全とは何か。", type: "choice", options: ["既に発生した問題に対処するための措置を講じること。", "問題が発生する可能性がある状況を完全に排除すること。", "事前に危険や問題を識別し、それらが発生することを防ぐための措置を講じること。", "発生した問題の影響を最小限に抑えるために、対応策を後から計画すること。"], answer: "事前に危険や問題を識別し、それらが発生することを防ぐための措置を講じること。" },
+            { chapter: 2, question: "予防保全においてAIが期待される理由はどれか。", type: "choice", options: ["AIは人間よりも低コストで利用可能であり、メンテナンスに関わる経済的負担を減らせるから。", "AIは機械の動作音を聞き分けることが得意であり、異常な音から故障を予測できるから。", "AIは大量のデータを高速に分析し、機械の状態をリアルタイムで監視し、異常や故障の兆候を早期検出することが可能であるから。", "AIは機械を自己修復する能力を持っており、故障が発生した場合には自動で修理を行なえるから。"], answer: "AIは大量のデータを高速に分析し、機械の状態をリアルタイムで監視し、異常や故障の兆候を早期検出することが可能であるから。" },
+            { chapter: 2, question: "1980年代の第二期AIブームにおいて、専門家の知識をデータベース化したAIシステムを何というか。カタカナ6文字で答えよ。", type: "text", answer: "エキスパート" },
+            { chapter: 2, question: "シンボリックAIにおける「推論」とは何を意味するか。", type: "choice", options: ["計算機が自ら学習するプロセス", "大量のデータからパターンを見つけ出すプロセス", "与えられたルールや事実から新たな結論を導き出すプロセス", "センサーデータから物体を認識するプロセス"], answer: "与えられたルールや事実から新たな結論を導き出すプロセス" },
+            { chapter: 2, question: "AIにおけるフレーム問題とはどのような問題か。", type: "choice", options: ["AIが新しいタスクについて学習する際に必要な計算資源の量を決定する問題", "AIがタスクを遂行する際に、どの情報を重要と判断し、どの情報を無視するかを識別する問題", "AIが異なるタスク間で知識を転移させる際に生じる誤差に関する問題", "AIが自己学習を通じて自身のアルゴリズムを最適化するプロセスの困難さに関連する問題"], answer: "AIがタスクを遂行する際に、どの情報を重要と判断し、どの情報を無視するかを識別する問題" },
+            { chapter: 2, question: "汎用型AIがフレーム問題に直面するのはなぜか。", type: "choice", options: ["計算能力の限界により、全ての情報を処理できないため", "感情的な要素を理解し、人間のような意思決定をする能力がないため", "特定のタスクにおいて最適なアルゴリズムを選択できないため", "任意の状況下で重要な情報と無関係な情報を区別する能力が限られているため"], answer: "任意の状況下で重要な情報と無関係な情報を区別する能力が限られているため" },
+            { chapter: 2, question: "フレーム問題を解決するための主要なアプローチはどれか。", type: "choice", options: ["あらゆる状況を想定して、そこで必要な情報をAIに事前学習させる", "AIに自己修正能力を持たせ、失敗や間違いから学習させる", "コンテキスト(文脈・状況)に基づいて情報の重要性を動的に評価するメカニズムを開発する", "AIに使用するコンピュータの計算能力を強化する"], answer: "コンテキスト(文脈・状況)に基づいて情報の重要性を動的に評価するメカニズムを開発する" },
+            { chapter: 2, question: "情報通信の文脈における5Gとは何の略か。", type: "choice", options: ["5th Generation Mobile Communication System", "5 Gigabytes", "5 Green Gardens", "5 Gaming Gadgets"], answer: "5th Generation Mobile Communication System" },
+            { chapter: 2, question: "IoTとは何の略か。", type: "choice", options: ["Interactive Online Tools", "International Office Training", "Invasion of Titans", "Internet of Things", "Icecream Over Time"], answer: "Internet of Things" },
+            { chapter: 2, question: "ビジネスにおいてビッグデータ分析が重視される主な理由は何か。", type: "choice", options: ["セキュリティ強化のため", "新しい価値の創出と意思決定のため", "広告の配信の最適化のため", "企業の社会的責任(CSR)の評価のため"], answer: "新しい価値の創出と意思決定のため" },
+            { chapter: 2, question: "ビッグデータにおける3Vは何を指すか。", type: "choice", options: ["Vision, Value, Volume", "Vampire, Violin, Vacation", "Validity, Variability, Visual", "Volume, Velocity, Variety", "Velocity, Volatility, Vector"], answer: "Volume, Velocity, Variety" },
+            { chapter: 2, question: "AIとIoTとビッグデータの関係として不適切なものはどれか。", type: "choice", options: ["AIはビッグデータを分析する手法を提供し、IoTはデータ供給源となる。", "ビッグデータはIoTを生成する技術である。", "AIはビッグデータを学習し、IoTデバイスのデータでリアルタイムに意思決定する。", "AIの高度な予測にはIoTデバイスから収集される膨大なデータが不可欠である。"], answer: "ビッグデータはIoTを生成する技術である。" },
+            { chapter: 2, question: "ISO8601形式「2024-04-09T19:04:00+09:00」の日本における日時はいつか。", type: "text", answer: "2024年4月9日19時04分00秒" },
+            { chapter: 2, question: "通信分野でbpsとは何の略語か。", type: "text", answer: "bit per second" },
+            { chapter: 2, question: "低消費電力で広範囲をカバーするIoT向け無線通信技術の総称をアルファベット4文字で答えよ。", type: "text", answer: "LPWA" },
+            { chapter: 2, question: "LPWAの通信特性として不適切なものを2つ選べ。", type: "multiple_choice", options: ["低消費電力", "低速", "低遅延", "低コスト", "短距離", "低頻度"], answer: ["低遅延", "短距離"] },
+            { chapter: 2, question: "Society 5.0では、Society 2.0を(①)社会、Society 4.0を(②)社会と位置付けている。①②に当てはまる語を漢字で答えよ。", type: "text", answer: "①農耕, ②情報" },
+            { chapter: 2, question: "第1次産業革命は(①)化、第3次産業革命は(②)化というキーワードで説明できる。①②に当てはまる語を漢字で答えよ。", type: "text", answer: "①機械, ②自動" },
+            { chapter: 2, question: "Society 5.0の文脈におけるCPSとは何の略語か。", type: "choice", options: ["Creative Process Synchronization", "Consumer Privacy Security", "Cyber Physical Systems", "Consumer Privacy Security"], answer: "Cyber Physical Systems" },
+            { chapter: 2, question: "Society 5.0の文脈におけるDXとは何の略語か。", type: "choice", options: ["Database Exchange", "Dynamic Experiment", "Digital Transformation", "Driving Experience", "Dimensional X-ray"], answer: "Digital Transformation" },
+            { chapter: 2, question: "ユーザーがECサイトで商品を閲覧した後、他のサイトで類似商品の広告が表示される手法を何というか。", type: "text", answer: "リターゲティング広告" },
+            { chapter: 2, question: "7セグメントLEDにおいて、a～gのLEDの点灯・消灯の組み合わせは全部で何通りあるか（全消灯含む）。", type: "text", answer: "128" },
             // chapter 3 (30問)
-            { chapter: 3, question: "シンボリックAIの最も適切な特徴はどれか。 [cite: 1]", type: "choice", options: ["大量データからパターンを自動学習し予測する。", "ユーザー行動を予測し個別最適化する。", "人間が設定したルールや知識に基づき論理的に推論する。", "音声や画像を処理する感覚的能力がある。"], answer: "人間が設定したルールや知識に基づき論理的に推論する。" },
-            { chapter: 3, question: "エキスパートシステムはどのAIに属するか。 [cite: 1]", type: "choice", options: ["感情を認識し反応できるAI", "ルールベースのAIまたはシンボリックAI", "自律走行車に使われるAI", "チャットボットに使われる自然言語処理AI"], answer: "ルールベースのAIまたはシンボリックAI" },
-            { chapter: 3, question: "機械学習に基づくAIはどのように機能するか。 [cite: 1]", type: "choice", options: ["過去のデータに基づき将来を正確に予測する。", "利用者の指示に基づきタスクを学習する。", "事前にプログラムされたルールに従いタスクを実行する。", "大量のデータからパターンを学習し予測や判断を行う。"], answer: "大量のデータからパターンを学習し予測や判断を行う。" },
-            { chapter: 3, question: "機械学習に基づくAIでは、未知のデータに対して何のモデルを使用して予測や判断を行うか。 [cite: 1]", type: "text", answer: "学習済みモデル" },
-            { chapter: 3, question: "シンボリックAIの設計・実装に広く使用されるプログラミングパラダイムはどれか。 [cite: 1]", type: "choice", options: ["手続き型プログラミング", "関数型プログラミング", "論理プログラミング", "オブジェクト指向プログラミング"], answer: "論理プログラミング" },
-            { chapter: 3, question: "シンボリックAIの設計・実装に適する論理プログラミング言語を答えよ。 [cite: 1]", type: "text", answer: "Prolog" },
-            { chapter: 3, question: "従来型の機械学習と深層学習に関する正しい説明はどれか。 [cite: 2]", type: "choice", options: ["従来型の機械学習ではアルゴリズムが自動で特徴量を発見する。", "深層学習では人間が明示的に特徴量をモデルに与える必要がある。", "従来型の機械学習では特徴量の選定がモデル性能に大きな影響を与えていた。", "深層学習ではモデルの性能が特徴量に依存しない。"], answer: "従来型の機械学習では特徴量の選定がモデル性能に大きな影響を与えていた。" },
-            { chapter: 3, question: "機械学習における「教師なし学習」を英語で何というか。 [cite: 2]", type: "choice", options: ["Unattended Learning", "Unsupervised Schooling", "Autonomous Learning", "Independent Learning", "Unsupervised Learning"], answer: "Unsupervised Learning" },
-            { chapter: 3, question: "機械学習で大量のデータからパターンや関係を抽出するために広く使われている学問分野は何か。 [cite: 2]", type: "choice", options: ["確率統計学", "論理学", "心理学", "脳科学", "情報理論", "占星術"], answer: "確率統計学" },
-            { chapter: 3, question: "二足歩行ロボットの姿勢制御を最適化するのに適した機械学習手法はどれか。 [cite: 2]", type: "choice", options: ["教師あり学習", "教師なし学習", "強化学習", "転移学習", "適応学習"], answer: "強化学習" },
-            { chapter: 3, question: "教師あり学習の「学習」ではどのようなデータが必要か。 [cite: 3]", type: "choice", options: ["正解ラベルの予測が困難な非構造化データ", "入力データに対する正解ラベルのないデータ", "入力データとそれに対応する正解ラベルがセットになったデータ", "ランダムに生成されたデータ"], answer: "入力データとそれに対応する正解ラベルがセットになったデータ" },
-            { chapter: 3, question: "教師あり学習における「学習済みモデル」はどのような役割を果たすか。 [cite: 3]", type: "choice", options: ["学習データに対する正解ラベルを生成する", "学習データセットを拡大するために新しいデータポイントを発見する", "未知の入力データに基づいて分類や予測を行う", "学習済みデータに対応した正解ラベルを取得する"], answer: "未知の入力データに基づいて分類や予測を行う" },
-            { chapter: 3, question: "教師あり学習を意味する英単語はどれか。 [cite: 3]", type: "choice", options: ["Unsupervised Learning", "Reinforcement Learning", "Anomaly Detection", "Supervised Learning"], answer: "Supervised Learning" },
-            { chapter: 3, question: "教師あり学習の「正解ラベル」の説明として不適切なものはどれか。 [cite: 3]", type: "choice", options: ["予測すべき正確なカテゴリや数値を提供する。", "学習フェーズでアルゴリズムにより自動生成される。", "モデルの予測と比較され、精度評価に使用される。", "学習データの各データに事前に付与される。"], answer: "学習フェーズでアルゴリズムにより自動生成される。" },
-            { chapter: 3, question: "教師あり学習で取り扱う代表的なタスクとして適切でないものはどれか。 [cite: 3]", type: "choice", options: ["Classification", "Clustering", "Regression", "Recommendation"], answer: "Clustering" },
-            { chapter: 3, question: "画像に写っている生き物を「イヌ」、「ネコ」、「その他」に分類するタスクはどれに相当するか。 [cite: 4]", type: "choice", options: ["Classification", "Clustering", "Regression", "Recommendation"], answer: "Classification" },
-            { chapter: 3, question: "本日の天気図と気温を用いて明日の気温を予測するタスクはどれに相当するか。 [cite: 4]", type: "choice", options: ["Classification", "Clustering", "Regression", "Recommendation"], answer: "Regression" },
-            { chapter: 3, question: "機械学習の「回帰」とは何を出力するタスクか。 [cite: 4]", type: "choice", options: ["推薦アイテム", "クラス(カテゴリ)", "数値(連続値)", "2値データ(バイナリデータ)"], answer: "数値(連続値)" },
-            { chapter: 3, question: "教師あり学習は、大きく(①)フェーズと(②)フェーズに分けることができる。括弧にあてはまる語を漢字で答えよ。 [cite: 4]", type: "text", answer: "①学習, ②予測" },
-            { chapter: 3, question: "学習フェーズと予測フェーズに要求されるコンピュータについて適切な説明はどれか。 [cite: 4]", type: "choice", options: ["学習フェーズよりも、予測フェーズのほうが高性能なコンピュータが要求される。", "予測フェーズよりも、学習フェーズのほうが高性能なコンピュータが要求される。", "学習フェーズと予測フェーズは、同一のコンピュータで実行する必要がある。", "予測フェーズには、GPUやNPU、TPUなどを搭載したコンピュータが必要である。"], answer: "予測フェーズよりも、学習フェーズのほうが高性能なコンピュータが要求される。" },
-            { chapter: 3, question: "教師あり学習における学習フェーズの目的はどれか。 [cite: 5]", type: "choice", options: ["学習済みモデルの性能を評価する。", "学習用データセットを用いてモデルの学習を行う。", "学習済みモデルを用いて回帰や分類などのタスクを実行する。", "学習用データセットを用いて学習済みモデルを生成し、その性能を評価する。"], answer: "学習用データセットを用いて学習済みモデルを生成し、その性能を評価する。" },
-            { chapter: 3, question: "教師あり学習で学習済みモデルの性能評価に使用するデータとして適切なものはどれか。 [cite: 5]", type: "choice", options: ["学習に使用した正解ラベルを持つデータ", "学習に使用した正解ラベルが未知のデータ", "学習には使用していない正解ラベルの付きのデータ", "学習には使用していない正解ラベルが未知のデータ"], answer: "学習には使用していない正解ラベルの付きのデータ" },
-            { chapter: 3, question: "教師あり学習の回帰タスクに使用される代表的なモデルを答えよ（NNベースを除く）。 [cite: 5]", type: "text", answer: "線形回帰, 決定木回帰, ランダムフォレスト回帰など" },
-            { chapter: 3, question: "教師あり学習の分類タスクに使用される代表的なモデルを答えよ（NNベースを除く）。 [cite: 5]", type: "text", answer: "ロジスティック回帰, 決定木, ランダムフォレストなど" },
-            { chapter: 3, question: "ニューラルネットワーク(ディープラーニング)の特性の説明として適切なものはどれか。 [cite: 5]", type: "choice", options: ["分類タスクにのみ適用可能である。", "パラメータが少なく短時間で学習が完了する。", "高い汎用性と性能を発揮するが、多くのパラメータと計算資源を要する。", "主にロジスティック回帰の学習アルゴリズムに基づく。"], answer: "高い汎用性と性能を発揮するが、多くのパラメータと計算資源を要する。" },
-            { chapter: 3, question: "「教師なし学習」の代表的なタスクとして適切なものを4つ選べ。 [cite: 6]", type: "multiple_choice", options: ["分類", "クラスタリング", "回帰", "異常検知", "次元削減", "推薦", "翻訳", "音声認識"], answer: ["クラスタリング", "異常検知", "次元削減", "推薦"] },
-            { chapter: 3, question: "教師なし学習の「次元削減」に用いる手法として適切なものを2つ選べ。 [cite: 6]", type: "multiple_choice", options: ["主成分分析", "リッジ回帰", "k-means法", "SVM", "協調フィルタリング", "線形判別分析"], answer: ["主成分分析", "線形判別分析"] },
-            { chapter: 3, question: "教師なし学習の「次元削減」の主な目的はどれか。 [cite: 6]", type: "choice", options: ["データセットの外れ値の検出", "データセットの拡張や水増し", "データセットの可視化の容易化", "データセットのノイズの平滑化"], answer: "データセットの可視化の容易化" },
-            { chapter: 3, question: "強化学習における「エージェント」とは何か。 [cite: 7]", type: "choice", options: ["学習環境を提供するシステム", "試行錯誤を通じて最適な行動を学習するプログラム", "環境と学習者の相互作用をシミュレートするソフトウェア", "行動の結果に対して報酬を与えるシステム"], answer: "試行錯誤を通じて最適な行動を学習するプログラム" },
-            { chapter: 3, question: "5桁のID「22609」のチェックディジットを計算する。IDの各桁の値を足し10で割った余りRを10から引く方法Aでは「1」。各奇数桁を3倍し偶数桁と足し合わせ10で割った余りRを10から引く方法Bではいくつか。 [cite: 7]", type: "text", answer: "7" },
+            { chapter: 3, question: "シンボリックAIの最も適切な特徴はどれか。", type: "choice", options: ["大量データからパターンを自動学習し予測する。", "ユーザー行動を予測し個別最適化する。", "人間が設定したルールや知識に基づき論理的に推論する。", "音声や画像を処理する感覚的能力がある。"], answer: "人間が設定したルールや知識に基づき論理的に推論する。" },
+            { chapter: 3, question: "エキスパートシステムはどのAIに属するか。", type: "choice", options: ["感情を認識し反応できるAI", "ルールベースのAIまたはシンボリックAI", "自律走行車に使われるAI", "チャットボットに使われる自然言語処理AI"], answer: "ルールベースのAIまたはシンボリックAI" },
+            { chapter: 3, question: "機械学習に基づくAIはどのように機能するか。", type: "choice", options: ["過去のデータに基づき将来を正確に予測する。", "利用者の指示に基づきタスクを学習する。", "事前にプログラムされたルールに従いタスクを実行する。", "大量のデータからパターンを学習し予測や判断を行う。"], answer: "大量のデータからパターンを学習し予測や判断を行う。" },
+            { chapter: 3, question: "機械学習に基づくAIでは、未知のデータに対して何のモデルを使用して予測や判断を行うか。", type: "text", answer: "学習済みモデル" },
+            { chapter: 3, question: "シンボリックAIの設計・実装に広く使用されるプログラミングパラダイムはどれか。", type: "choice", options: ["手続き型プログラミング", "関数型プログラミング", "論理プログラミング", "オブジェクト指向プログラミング"], answer: "論理プログラミング" },
+            { chapter: 3, question: "シンボリックAIの設計・実装に適する論理プログラミング言語を答えよ。", type: "text", answer: "Prolog" },
+            { chapter: 3, question: "従来型の機械学習と深層学習に関する正しい説明はどれか。", type: "choice", options: ["従来型の機械学習ではアルゴリズムが自動で特徴量を発見する。", "深層学習では人間が明示的に特徴量をモデルに与える必要がある。", "従来型の機械学習では特徴量の選定がモデル性能に大きな影響を与えていた。", "深層学習ではモデルの性能が特徴量に依存しない。"], answer: "従来型の機械学習では特徴量の選定がモデル性能に大きな影響を与えていた。" },
+            { chapter: 3, question: "機械学習における「教師なし学習」を英語で何というか。", type: "choice", options: ["Unattended Learning", "Unsupervised Schooling", "Autonomous Learning", "Independent Learning", "Unsupervised Learning"], answer: "Unsupervised Learning" },
+            { chapter: 3, question: "機械学習で大量のデータからパターンや関係を抽出するために広く使われている学問分野は何か。", type: "choice", options: ["確率統計学", "論理学", "心理学", "脳科学", "情報理論", "占星術"], answer: "確率統計学" },
+            { chapter: 3, question: "二足歩行ロボットの姿勢制御を最適化するのに適した機械学習手法はどれか。", type: "choice", options: ["教師あり学習", "教師なし学習", "強化学習", "転移学習", "適応学習"], answer: "強化学習" },
+            { chapter: 3, question: "教師あり学習の「学習」ではどのようなデータが必要か。", type: "choice", options: ["正解ラベルの予測が困難な非構造化データ", "入力データに対する正解ラベルのないデータ", "入力データとそれに対応する正解ラベルがセットになったデータ", "ランダムに生成されたデータ"], answer: "入力データとそれに対応する正解ラベルがセットになったデータ" },
+            { chapter: 3, question: "教師あり学習における「学習済みモデル」はどのような役割を果たすか。", type: "choice", options: ["学習データに対する正解ラベルを生成する", "学習データセットを拡大するために新しいデータポイントを発見する", "未知の入力データに基づいて分類や予測を行う", "学習済みデータに対応した正解ラベルを取得する"], answer: "未知の入力データに基づいて分類や予測を行う" },
+            { chapter: 3, question: "教師あり学習を意味する英単語はどれか。", type: "choice", options: ["Unsupervised Learning", "Reinforcement Learning", "Anomaly Detection", "Supervised Learning"], answer: "Supervised Learning" },
+            { chapter: 3, question: "教師あり学習の「正解ラベル」の説明として不適切なものはどれか。", type: "choice", options: ["予測すべき正確なカテゴリや数値を提供する。", "学習フェーズでアルゴリズムにより自動生成される。", "モデルの予測と比較され、精度評価に使用される。", "学習データの各データに事前に付与される。"], answer: "学習フェーズでアルゴリズムにより自動生成される。" },
+            { chapter: 3, question: "教師あり学習で取り扱う代表的なタスクとして適切でないものはどれか。", type: "choice", options: ["Classification", "Clustering", "Regression", "Recommendation"], answer: "Clustering" },
+            { chapter: 3, question: "画像に写っている生き物を「イヌ」、「ネコ」、「その他」に分類するタスクはどれに相当するか。", type: "choice", options: ["Classification", "Clustering", "Regression", "Recommendation"], answer: "Classification" },
+            { chapter: 3, question: "本日の天気図と気温を用いて明日の気温を予測するタスクはどれに相当するか。", type: "choice", options: ["Classification", "Clustering", "Regression", "Recommendation"], answer: "Regression" },
+            { chapter: 3, question: "機械学習の「回帰」とは何を出力するタスクか。", type: "choice", options: ["推薦アイテム", "クラス(カテゴリ)", "数値(連続値)", "2値データ(バイナリデータ)"], answer: "数値(連続値)" },
+            { chapter: 3, question: "教師あり学習は、大きく(①)フェーズと(②)フェーズに分けることができる。括弧にあてはまる語を漢字で答えよ。", type: "text", answer: "①学習, ②予測" },
+            { chapter: 3, question: "学習フェーズと予測フェーズに要求されるコンピュータについて適切な説明はどれか。", type: "choice", options: ["学習フェーズよりも、予測フェーズのほうが高性能なコンピュータが要求される。", "予測フェーズよりも、学習フェーズのほうが高性能なコンピュータが要求される。", "学習フェーズと予測フェーズは、同一のコンピュータで実行する必要がある。", "予測フェーズには、GPUやNPU、TPUなどを搭載したコンピュータが必要である。"], answer: "予測フェーズよりも、学習フェーズのほうが高性能なコンピュータが要求される。" },
+            { chapter: 3, question: "教師あり学習における学習フェーズの目的はどれか。", type: "choice", options: ["学習済みモデルの性能を評価する。", "学習用データセットを用いてモデルの学習を行う。", "学習済みモデルを用いて回帰や分類などのタスクを実行する。", "学習用データセットを用いて学習済みモデルを生成し、その性能を評価する。"], answer: "学習用データセットを用いて学習済みモデルを生成し、その性能を評価する。" },
+            { chapter: 3, question: "教師あり学習で学習済みモデルの性能評価に使用するデータとして適切なものはどれか。", type: "choice", options: ["学習に使用した正解ラベルを持つデータ", "学習に使用した正解ラベルが未知のデータ", "学習には使用していない正解ラベルの付きのデータ", "学習には使用していない正解ラベルが未知のデータ"], answer: "学習には使用していない正解ラベルの付きのデータ" },
+            { chapter: 3, question: "教師あり学習の回帰タスクに使用される代表的なモデルを答えよ（NNベースを除く）。", type: "text", answer: "線形回帰, 決定木回帰, ランダムフォレスト回帰など" },
+            { chapter: 3, question: "教師あり学習の分類タスクに使用される代表的なモデルを答えよ（NNベースを除く）。", type: "text", answer: "ロジスティック回帰, 決定木, ランダムフォレストなど" },
+            { chapter: 3, question: "ニューラルネットワーク(ディープラーニング)の特性の説明として適切なものはどれか。", type: "choice", options: ["分類タスクにのみ適用可能である。", "パラメータが少なく短時間で学習が完了する。", "高い汎用性と性能を発揮するが、多くのパラメータと計算資源を要する。", "主にロジスティック回帰の学習アルゴリズムに基づく。"], answer: "高い汎用性と性能を発揮するが、多くのパラメータと計算資源を要する。" },
+            { chapter: 3, question: "「教師なし学習」の代表的なタスクとして適切なものを4つ選べ。", type: "multiple_choice", options: ["分類", "クラスタリング", "回帰", "異常検知", "次元削減", "推薦", "翻訳", "音声認識"], answer: ["クラスタリング", "異常検知", "次元削減", "推薦"] },
+            { chapter: 3, question: "教師なし学習の「次元削減」に用いる手法として適切なものを2つ選べ。", type: "multiple_choice", options: ["主成分分析", "リッジ回帰", "k-means法", "SVM", "協調フィルタリング", "線形判別分析"], answer: ["主成分分析", "線形判別分析"] },
+            { chapter: 3, question: "教師なし学習の「次元削減」の主な目的はどれか。", type: "choice", options: ["データセットの外れ値の検出", "データセットの拡張や水増し", "データセットの可視化の容易化", "データセットのノイズの平滑化"], answer: "データセットの可視化の容易化" },
+            { chapter: 3, question: "強化学習における「エージェント」とは何か。", type: "choice", options: ["学習環境を提供するシステム", "試行錯誤を通じて最適な行動を学習するプログラム", "環境と学習者の相互作用をシミュレートするソフトウェア", "行動の結果に対して報酬を与えるシステム"], answer: "試行錯誤を通じて最適な行動を学習するプログラム" },
+            { chapter: 3, question: "5桁のID「22609」のチェックディジットを計算する。IDの各桁の値を足し10で割った余りRを10から引く方法Aでは「1」。各奇数桁を3倍し偶数桁と足し合わせ10で割った余りRを10から引く方法Bではいくつか。", type: "text", answer: "7" },
             // chapter 4 (29問)
-            { chapter: 4, question: "生理学的なニューロンの信号伝達に関する最も適切な説明はどれか。 [cite: 8]", type: "choice", options: ["励起性信号で発火し、抑制性信号で発火が中止される。", "信号受け取り後、約10ms以内に発火する。", "信号で累積的に電位が変化し、閾値を超えると発火する。", "隣接する全てのニューロンから信号を受け取ると発火する。"], answer: "信号で累積的に電位が変化し、閾値を超えると発火する。" },
-            { chapter: 4, question: "生理学的なニューラルネットワークの構造に関する最も適切な説明はどれか。 [cite: 8]", type: "choice", options: ["1対1で双方向に接続", "1対1で単方向に接続", "複数のニューロンと単方向で接続", "複数のニューロンと双方向で接続"], answer: "複数のニューロンと単方向で接続" },
-            { chapter: 4, question: "生理学的なニューラルネットワークの信号伝達に関する正しい説明はどれか。 [cite: 8]", type: "choice", options: ["信号の強度は常に均一", "信号のタイプは全て同じ", "受け取った信号を同じ強度で伝える", "励起性信号で電位が上がり、抑制性信号で電位が下がる"], answer: "励起性信号で電位が上がり、抑制性信号で電位が下がる" },
-            { chapter: 4, question: "ニューラルネットワークの文脈でMLPとは何の略語か。 [cite: 8]", type: "choice", options: ["Modern Learning Protocol", "Multi-Layer Perceptron", "Multiple Linear Programs", "Memory Layer Protocol"], answer: "Multi-Layer Perceptron" },
-            { chapter: 4, question: "Transformerモデルが使用する特徴的なメカニズムはどれか。 [cite: 9]", type: "choice", options: ["Self-Attention", "Recurrent Units", "Gate Layers", "Perceptron Relays"], answer: "Self-Attention" },
-            { chapter: 4, question: "次のうち、ディープラーニングには属さないモデルはどれか。 [cite: 9]", type: "choice", options: ["MLP", "CNN", "SVM", "RNN", "LSTM", "Transformer"], answer: "SVM" },
-            { chapter: 4, question: "畳み込みニューラルネットワーク(CNN)が得意とするタスクはどれか。 [cite: 9]", type: "choice", options: ["シーケンスデータの処理", "画像データの処理", "テキストデータの処理", "動画データの処理"], answer: "画像データの処理" },
-            { chapter: 4, question: "「音声認識」と「画像認識」に最も適するニューラルネットワークモデルはそれぞれどれか。①MLP ②CNN ③RNN ④GAN [cite: 9]", type: "text", answer: "音声認識:RNN, 画像認識:CNN" },
-            { chapter: 4, question: "16×16ピクセルのグレースケール画像でトランプのスート(4種)を分類するMLPの入力層と出力層のニューロン数はそれぞれいくつか。 [cite: 10]", type: "text", answer: "入力層:256, 出力層:4" },
-            { chapter: 4, question: "50×50ピクセルの衛星画像から植生密度(0-100%)を予測するMLPの入力層と出力層のニューロン数はいくつか。 [cite: 10]", type: "text", answer: "入力層:2500, 出力層:1" },
-            { chapter: 4, question: "40×40ピクセルの気象レーダー画像から「降水量」と「落雷発生確率」を予測するMLPの入力層と出力層のニューロン数はいくつか。 [cite: 10]", type: "text", answer: "入力層:1600, 出力層:2" },
-            { chapter: 4, question: "ニューラルネットワークの入力として「気温」を用いるときに推奨される前処理はどれか。 [cite: 10]", type: "choice", options: ["二値化", "正規化", "正則化", "One-hotエンコーディング"], answer: "正規化" },
-            { chapter: 4, question: "次の特徴量のうち、One-hotエンコーディングが推奨されるものはどれか。 [cite: 10]", type: "choice", options: ["血圧", "心拍数", "血液型", "輸血経験の有無", "生物学的な性別"], answer: "血液型" },
-            { chapter: 4, question: "特徴量の前処理としての「正規化」について適切に説明しているものはどれか。 [cite: 11]", type: "choice", options: ["値を0か1に変換する", "平均を0にする", "外れ値を除去する", "範囲を0.0から1.0にスケーリングする"], answer: "範囲を0.0から1.0にスケーリングする" },
-            { chapter: 4, question: "ニューラルネットワークに入力する特徴量の前処理として、常にOne-hotエンコーディングが推奨されるものはどれか。 [cite: 11]", type: "choice", options: ["名義尺度", "順序尺度", "間隔尺度", "比例尺度"], answer: "名義尺度" },
-            { chapter: 4, question: "MLPに「画像」を特徴量として用いる場合に一般的に必要となる前処理はどれか。 [cite: 11]", type: "choice", options: ["色の反転", "平坦化と正規化", "カラーフィルタの適用", "高解像度化"], answer: "平坦化と正規化" },
-            { chapter: 4, question: "MLPに32×32ピクセルのカラー画像を平坦化して用いる場合、入力層に必要なニューロンの数はいくつか。 [cite: 11]", type: "text", answer: "3072" },
-            { chapter: 4, question: "深層学習に用いる画像の前処理としてRGBをHSVに変換するメリットは何か。 [cite: 11]", type: "choice", options: ["ピクセル数を減らせる", "透過情報を扱える", "ファイルサイズを小さくできる", "色情報を人間の視覚に即した形で表現できる"], answer: "色情報を人間の視覚に即した形で表現できる" },
-            { chapter: 4, question: "高解像度の画像を機械学習に用いる際の説明として不適切なものはどれか。 [cite: 12]", type: "choice", options: ["認識精度が向上する可能性がある。", "計算資源や時間が増加する。", "学習に必要な画像の枚数を減らすことができる。", "過学習を引き起こす可能性がある。"], answer: "学習に必要な画像の枚数を減らすことができる。" },
-            { chapter: 4, question: "MLPの学習フェーズで誤差逆伝播法などを通じて最適化するパラメータはどれか。すべて答えよ。 [cite: 12]", type: "multiple_choice", options: ["特徴量(入力値)", "中間層の層数とニューロン数", "各ニューロンのバイアス", "各ニューロンの出力値", "各ニューロン間の重み係数", "予測値(出力値)"], answer: ["各ニューロンのバイアス", "各ニューロン間の重み係数"] },
-            { chapter: 4, question: "入力層784、中間層1が16、中間層2が16、出力層10の全結合MLPで最適化するパラメータの数はいくつか。 [cite: 12]", type: "text", answer: "13002" },
-            { chapter: 4, question: "図のNNで、Layer1のニューロンa₀⁽¹⁾の出力値を数式で示せ。活性化関数をf、バイアスをb₀とする。 [cite: 12, 13]", type: "text", answer: "f(w₀,₀a₀⁽⁰⁾ + w₀,₁a₁⁽⁰⁾ + w₀,₂a₂⁽⁰⁾ + b₀)" },
-            { chapter: 4, question: "ReLU関数とシグモイド関数を表したものはそれぞれどれか。①f(x)=max(0,x) ②f(x)=min(0,x) ③f(x)=(1+e⁻ˣ)⁻¹ ④f(x)=(1-e⁻ˣ)⁻¹ [cite: 13]", type: "text", answer: "ReLU:①, シグモイド:③" },
-            { chapter: 4, question: "ニューラルネットワークの「重み係数」と「バイアス」が取りうる数値の範囲で正しい説明はどれか。 [cite: 14]", type: "choice", options: ["両方とも0以上の実数", "両方とも任意の実数", "重みは0以上、バイアスは任意", "重みは任意、バイアスは0以上"], answer: "両方とも任意の実数" },
-            { chapter: 4, question: "誤差逆伝播法に最も関連深い数学の分野はどれか。 [cite: 14]", type: "choice", options: ["確率", "統計", "偏微分", "重積分", "複素数", "幾何学"], answer: "偏微分" },
-            { chapter: 4, question: "ニューラルネットワークにおける活性化関数の主たる役割はなにか。 [cite: 14]", type: "choice", options: ["誤差勾配を効率的に伝播させる", "各層の出力を正規分布に近似させる", "ニューラルネットワークに非線形性を導入する", "ニューロンの出力を特定の範囲内に収める"], answer: "ニューラルネットワークに非線形性を導入する" },
-            { chapter: 4, question: "非線形の活性化関数を使用しないMLPは、どのようなモデルと等価といえるか。 [cite: 14]", type: "choice", options: ["単層ニューラルネットワーク", "線形重回帰モデル", "多変量線形回帰モデル", "単一の線形分類器"], answer: "単層ニューラルネットワーク" },
-            { chapter: 4, question: "活性化関数を使用しない場合、与えられた2層のNNと等価な1層のNNのパラメータW'とb'を求めよ。W⁽⁰,¹⁾=[[0.4,0],[0.5,1]], W⁽¹,²⁾=[[-0.2,0.8],[-0.5,0.5]], b⁽¹⁾=[0.4,0.2], b⁽²⁾=[0.3,0.2] [cite: 15]", type: "text", answer: "W'=[[0.32, 0.8],[0.05, 0.5]], b'=[0.38, 0.1]" },
-            { chapter: 4, question: "フィッツの法則に基づくと、ディスプレイの端にあるターゲットは実質的にサイズが無限大と見なせる。図で示されたマウス位置から最も短時間で指し示せるのはどのターゲットか。 [cite: 16]", type: "choice", options: ["0", "1", "2", "3"], answer: "2" },
+            { chapter: 4, question: "生理学的なニューロンの信号伝達に関する最も適切な説明はどれか。", type: "choice", options: ["励起性信号で発火し、抑制性信号で発火が中止される。", "信号受け取り後、約10ms以内に発火する。", "信号で累積的に電位が変化し、閾値を超えると発火する。", "隣接する全てのニューロンから信号を受け取ると発火する。"], answer: "信号で累積的に電位が変化し、閾値を超えると発火する。" },
+            { chapter: 4, question: "生理学的なニューラルネットワークの構造に関する最も適切な説明はどれか。", type: "choice", options: ["1対1で双方向に接続", "1対1で単方向に接続", "複数のニューロンと単方向で接続", "複数のニューロンと双方向で接続"], answer: "複数のニューロンと単方向で接続" },
+            { chapter: 4, question: "生理学的なニューラルネットワークの信号伝達に関する正しい説明はどれか。", type: "choice", options: ["信号の強度は常に均一", "信号のタイプは全て同じ", "受け取った信号を同じ強度で伝える", "励起性信号で電位が上がり、抑制性信号で電位が下がる"], answer: "励起性信号で電位が上がり、抑制性信号で電位が下がる" },
+            { chapter: 4, question: "ニューラルネットワークの文脈でMLPとは何の略語か。", type: "choice", options: ["Modern Learning Protocol", "Multi-Layer Perceptron", "Multiple Linear Programs", "Memory Layer Protocol"], answer: "Multi-Layer Perceptron" },
+            { chapter: 4, question: "Transformerモデルが使用する特徴的なメカニズムはどれか。", type: "choice", options: ["Self-Attention", "Recurrent Units", "Gate Layers", "Perceptron Relays"], answer: "Self-Attention" },
+            { chapter: 4, question: "次のうち、ディープラーニングには属さないモデルはどれか。", type: "choice", options: ["MLP", "CNN", "SVM", "RNN", "LSTM", "Transformer"], answer: "SVM" },
+            { chapter: 4, question: "畳み込みニューラルネットワーク(CNN)が得意とするタスクはどれか。", type: "choice", options: ["シーケンスデータの処理", "画像データの処理", "テキストデータの処理", "動画データの処理"], answer: "画像データの処理" },
+            { chapter: 4, question: "「音声認識」と「画像認識」に最も適するニューラルネットワークモデルはそれぞれどれか。①MLP ②CNN ③RNN ④GAN", type: "text", answer: "音声認識:RNN, 画像認識:CNN" },
+            { chapter: 4, question: "16×16ピクセルのグレースケール画像でトランプのスート(4種)を分類するMLPの入力層と出力層のニューロン数はそれぞれいくつか。", type: "text", answer: "入力層:256, 出力層:4" },
+            { chapter: 4, question: "50×50ピクセルの衛星画像から植生密度(0-100%)を予測するMLPの入力層と出力層のニューロン数はいくつか。", type: "text", answer: "入力層:2500, 出力層:1" },
+            { chapter: 4, question: "40×40ピクセルの気象レーダー画像から「降水量」と「落雷発生確率」を予測するMLPの入力層と出力層のニューロン数はいくつか。", type: "text", answer: "入力層:1600, 出力層:2" },
+            { chapter: 4, question: "ニューラルネットワークの入力として「気温」を用いるときに推奨される前処理はどれか。", type: "choice", options: ["二値化", "正規化", "正則化", "One-hotエンコーディング"], answer: "正規化" },
+            { chapter: 4, question: "次の特徴量のうち、One-hotエンコーディングが推奨されるものはどれか。", type: "choice", options: ["血圧", "心拍数", "血液型", "輸血経験の有無", "生物学的な性別"], answer: "血液型" },
+            { chapter: 4, question: "特徴量の前処理としての「正規化」について適切に説明しているものはどれか。", type: "choice", options: ["値を0か1に変換する", "平均を0にする", "外れ値を除去する", "範囲を0.0から1.0にスケーリングする"], answer: "範囲を0.0から1.0にスケーリングする" },
+            { chapter: 4, question: "ニューラルネットワークに入力する特徴量の前処理として、常にOne-hotエンコーディングが推奨されるものはどれか。", type: "choice", options: ["名義尺度", "順序尺度", "間隔尺度", "比例尺度"], answer: "名義尺度" },
+            { chapter: 4, question: "MLPに「画像」を特徴量として用いる場合に一般的に必要となる前処理はどれか。", type: "choice", options: ["色の反転", "平坦化と正規化", "カラーフィルタの適用", "高解像度化"], answer: "平坦化と正規化" },
+            { chapter: 4, question: "MLPに32×32ピクセルのカラー画像を平坦化して用いる場合、入力層に必要なニューロンの数はいくつか。", type: "text", answer: "3072" },
+            { chapter: 4, question: "深層学習に用いる画像の前処理としてRGBをHSVに変換するメリットは何か。", type: "choice", options: ["ピクセル数を減らせる", "透過情報を扱える", "ファイルサイズを小さくできる", "色情報を人間の視覚に即した形で表現できる"], answer: "色情報を人間の視覚に即した形で表現できる" },
+            { chapter: 4, question: "高解像度の画像を機械学習に用いる際の説明として不適切なものはどれか。", type: "choice", options: ["認識精度が向上する可能性がある。", "計算資源や時間が増加する。", "学習に必要な画像の枚数を減らすことができる。", "過学習を引き起こす可能性がある。"], answer: "学習に必要な画像の枚数を減らすことができる。" },
+            { chapter: 4, question: "MLPの学習フェーズで誤差逆伝播法などを通じて最適化するパラメータはどれか。すべて答えよ。", type: "multiple_choice", options: ["特徴量(入力値)", "中間層の層数とニューロン数", "各ニューロンのバイアス", "各ニューロンの出力値", "各ニューロン間の重み係数", "予測値(出力値)"], answer: ["各ニューロンのバイアス", "各ニューロン間の重み係数"] },
+            { chapter: 4, question: "入力層784、中間層1が16、中間層2が16、出力層10の全結合MLPで最適化するパラメータの数はいくつか。", type: "text", answer: "13002" },
+            { chapter: 4, question: "図のNNで、Layer1のニューロンa₀⁽¹⁾の出力値を数式で示せ。活性化関数をf、バイアスをb₀とする。", type: "text", answer: "f(w₀,₀a₀⁽⁰⁾ + w₀,₁a₁⁽⁰⁾ + w₀,₂a₂⁽⁰⁾ + b₀)" },
+            { chapter: 4, question: "ReLU関数とシグモイド関数を表したものはそれぞれどれか。①f(x)=max(0,x) ②f(x)=min(0,x) ③f(x)=(1+e⁻ˣ)⁻¹ ④f(x)=(1-e⁻ˣ)⁻¹", type: "text", answer: "ReLU:①, シグモイド:③" },
+            { chapter: 4, question: "ニューラルネットワークの「重み係数」と「バイアス」が取りうる数値の範囲で正しい説明はどれか。", type: "choice", options: ["両方とも0以上の実数", "両方とも任意の実数", "重みは0以上、バイアスは任意", "重みは任意、バイアスは0以上"], answer: "両方とも任意の実数" },
+            { chapter: 4, question: "誤差逆伝播法に最も関連深い数学の分野はどれか。", type: "choice", options: ["確率", "統計", "偏微分", "重積分", "複素数", "幾何学"], answer: "偏微分" },
+            { chapter: 4, question: "ニューラルネットワークにおける活性化関数の主たる役割はなにか。", type: "choice", options: ["誤差勾配を効率的に伝播させる", "各層の出力を正規分布に近似させる", "ニューラルネットワークに非線形性を導入する", "ニューロンの出力を特定の範囲内に収める"], answer: "ニューラルネットワークに非線形性を導入する" },
+            { chapter: 4, question: "非線形の活性化関数を使用しないMLPは、どのようなモデルと等価といえるか。", type: "choice", options: ["単層ニューラルネットワーク", "線形重回帰モデル", "多変量線形回帰モデル", "単一の線形分類器"], answer: "単層ニューラルネットワーク" },
+            { chapter: 4, question: "活性化関数を使用しない場合、与えられた2層のNNと等価な1層のNNのパラメータW'とb'を求めよ。W⁽⁰,¹⁾=[[0.4,0],[0.5,1]], W⁽¹,²⁾=[[-0.2,0.8],[-0.5,0.5]], b⁽¹⁾=[0.4,0.2], b⁽²⁾=[0.3,0.2]", type: "text", answer: "W'=[[0.32, 0.8],[0.05, 0.5]], b'=[0.38, 0.1]" },
+            { chapter: 4, question: "フィッツの法則に基づくと、ディスプレイの端にあるターゲットは実質的にサイズが無限大と見なせる。図で示されたマウス位置から最も短時間で指し示せるのはどのターゲットか。", type: "choice", options: ["0", "1", "2", "3"], answer: "2" },
             // chapter 5 (16問)
-            { chapter: 5, question: "深層学習における「エポック数」とは何か。 [cite: 18]", type: "choice", options: ["モデルの学習が完了するまでの時間", "ニューラルネットワークの中間層の数", "与えられたデータセットを学習に使用する回数", "学習率を設定するパラメータ"], answer: "与えられたデータセットを学習に使用する回数" },
-            { chapter: 5, question: "深層学習において「学習率」を高く設定することで生じる影響はどれか。 [cite: 18]", type: "choice", options: ["重み係数やバイアスの更新が小刻みになる", "重み係数やバイアスの最適値を飛び越えやすくなる", "学習におけるメモリ使用量が増加する", "データのバッチ処理速度が向上する"], answer: "重み係数やバイアスの最適値を飛び越えやすくなる" },
-            { chapter: 5, question: "深層学習おける「汎化性能」に関して誤った説明はどれか。 [cite: 18]", type: "choice", options: ["エポック数が多いほど向上し、学習データの精度が高いほど未知データにも強くなる。", "過学習を回避し、未知データに高い精度で予測できるかを表す指標。", "学習データの特徴が検証データでも有効かを表し、検証データへの予測精度が高いことを意味する。", "モデルが未知データにどれだけ適切に予測できるかを示し、学習データの多様性に依存する。"], answer: "エポック数が多いほど向上し、学習データの精度が高いほど未知データにも強くなる。" },
-            { chapter: 5, question: "深層学習おける「過学習」について正しい説明はどれか。 [cite: 18]", type: "choice", options: ["主にエポック数が過剰に多いときに生じやすい", "主に学習率が高いときに生じやすい", "主にバッチサイズが大きいときに生じやすい", "主に学習データが多いときに生じやすい"], answer: "主にエポック数が過剰に多いときに生じやすい" },
-            { chapter: 5, question: "過学習が起きたモデルの状態として正しいものはどれか。 [cite: 19]", type: "choice", options: ["学習データに高精度、検証データに低精度", "学習データに低精度、検証データに低精度", "学習データに高精度、検証データに高精度", "学習データに低精度、検証データに高精度"], answer: "学習データに高精度、検証データに低精度" },
-            { chapter: 5, question: "深層学習おける「汎化性能」の適切な説明はどれか。 [cite: 19]", type: "choice", options: ["学習に使わなかった検証用データに対しても精度の高い予測ができる性能", "学習に使用したデータに対して高い精度を示す性能", "異常な学習データを検出して学習から除外する性能", "少量の学習データからでも効率よく学習をする性能"], answer: "学習に使わなかった検証用データに対しても精度の高い予測ができる性能" },
-            { chapter: 5, question: "「エポック数」と「学習率」の設定に関して適切なものはどれか。 [cite: 19]", type: "choice", options: ["学習率を低く設定するときは、エポック数を少なくする。", "学習率を低く設定するときは、エポック数を多くする。"], answer: "学習率を低く設定するときは、エポック数を多くする。" },
-            { chapter: 5, question: "機械学習の文脈において「正解率」を表す語はどれか。 [cite: 19]", type: "choice", options: ["Precision", "Recall", "Accuracy", "F1-Score", "Loss"], answer: "Accuracy" },
-            { chapter: 5, question: "与えられた混同行列で、正解ラベルが「タヌキ」のデータが誤って「オオカミ」に分類された件数はいくつか。 [cite: 22]", type: "text", answer: "6" },
-            { chapter: 5, question: "与えられた混同行列で、クラス「ネコ」のAccuracy (%)はいくらか。 [cite: 21, 22]", type: "text", answer: "94" },
-            { chapter: 5, question: "与えられた混同行列のモデルを改善するために最も有効と考えられるアプローチはどれか。 [cite: 22]", type: "choice", options: ["イヌとオオカミの学習用データを増やして再学習する。", "オオカミとネコの学習用データを増やして再学習する。", "ネコの学習用データを増やして再学習する。", "ネコとイヌの学習用データを増やして再学習する。"], answer: "イヌとオオカミの学習用データを増やして再学習する。" },
-            { chapter: 5, question: "学習用損失(Loss)と検証用損失(Test Loss)のグラフで、Lossが減少し続けているのにTest Lossが増加している場合、どのような状態を示しているか。 [cite: 22]", type: "text", answer: "過学習" },
-            { chapter: 5, question: "Transfer LearningおよびFine Tuningに関する説明として誤っているものはどれか。 [cite: 22]", type: "choice", options: ["Fine TuningはTransfer Learningの一手法である。", "Fine Tuningは学習済みモデルの中間層を新しいデータセットで再訓練する技術である。", "Fine Tuningは既存モデルに適合するように入力データを調整する技術である。", "Fine Tuningは限られたデータでも一定の性能を期待できる。"], answer: "Fine Tuningは既存モデルに適合するように入力データを調整する技術である。" },
-            { chapter: 5, question: "深層学習において損失関数の出力値Lの一般的な範囲はどれか。 [cite: 23]", type: "choice", options: ["-1.0 ≤ L ≤ 1.0", "0.0 ≤ L", "0.0 ≤ L ≤ 1.0", "L ≤ 0.0"], answer: "0.0 ≤ L" },
-            { chapter: 5, question: "スーパーのレシート分析で「曜日別の各商品の購入状況」を把握するには、「購入日、曜日」の他にどの情報が必要か。図から2つ選べ。③商品コード、④購入した商品の個数、⑤購入した商品の合計金額 [cite: 26, 28]", type: "multiple_choice", options: ["商品コード", "購入した商品の個数", "購入した商品の合計金額"], answer: ["商品コード", "購入した商品の個数"] },
-            { chapter: 5, question: "ポイント会員情報とレシート情報を組み合わせた分析で得られない情報はどれか。 [cite: 24, 28]", type: "choice", options: ["顧客が商品を購入した理由。", "繰り返し購入される傾向がある商品。", "商品を多く購入している顧客の年齢層。", "年齢や性別による来店時間帯の傾向。"], answer: "顧客が商品を購入した理由。" },
+            { chapter: 5, question: "深層学習における「エポック数」とは何か。", type: "choice", options: ["モデルの学習が完了するまでの時間", "ニューラルネットワークの中間層の数", "与えられたデータセットを学習に使用する回数", "学習率を設定するパラメータ"], answer: "与えられたデータセットを学習に使用する回数" },
+            { chapter: 5, question: "深層学習において「学習率」を高く設定することで生じる影響はどれか。", type: "choice", options: ["重み係数やバイアスの更新が小刻みになる", "重み係数やバイアスの最適値を飛び越えやすくなる", "学習におけるメモリ使用量が増加する", "データのバッチ処理速度が向上する"], answer: "重み係数やバイアスの最適値を飛び越えやすくなる" },
+            { chapter: 5, question: "深層学習おける「汎化性能」に関して誤った説明はどれか。", type: "choice", options: ["エポック数が多いほど向上し、学習データの精度が高いほど未知データにも強くなる。", "過学習を回避し、未知データに高い精度で予測できるかを表す指標。", "学習データの特徴が検証データでも有効かを表し、検証データへの予測精度が高いことを意味する。", "モデルが未知データにどれだけ適切に予測できるかを示し、学習データの多様性に依存する。"], answer: "エポック数が多いほど向上し、学習データの精度が高いほど未知データにも強くなる。" },
+            { chapter: 5, question: "深層学習おける「過学習」について正しい説明はどれか。", type: "choice", options: ["主にエポック数が過剰に多いときに生じやすい", "主に学習率が高いときに生じやすい", "主にバッチサイズが大きいときに生じやすい", "主に学習データが多いときに生じやすい"], answer: "主にエポック数が過剰に多いときに生じやすい" },
+            { chapter: 5, question: "過学習が起きたモデルの状態として正しいものはどれか。", type: "choice", options: ["学習データに高精度、検証データに低精度", "学習データに低精度、検証データに低精度", "学習データに高精度、検証データに高精度", "学習データに低精度、検証データに高精度"], answer: "学習データに高精度、検証データに低精度" },
+            { chapter: 5, question: "深層学習おける「汎化性能」の適切な説明はどれか。", type: "choice", options: ["学習に使わなかった検証用データに対しても精度の高い予測ができる性能", "学習に使用したデータに対して高い精度を示す性能", "異常な学習データを検出して学習から除外する性能", "少量の学習データからでも効率よく学習をする性能"], answer: "学習に使わなかった検証用データに対しても精度の高い予測ができる性能" },
+            { chapter: 5, question: "「エポック数」と「学習率」の設定に関して適切なものはどれか。", type: "choice", options: ["学習率を低く設定するときは、エポック数を少なくする。", "学習率を低く設定するときは、エポック数を多くする。"], answer: "学習率を低く設定するときは、エポック数を多くする。" },
+            { chapter: 5, question: "機械学習の文脈において「正解率」を表す語はどれか。", type: "choice", options: ["Precision", "Recall", "Accuracy", "F1-Score", "Loss"], answer: "Accuracy" },
+            { chapter: 5, question: "与えられた混同行列で、正解ラベルが「タヌキ」のデータが誤って「オオカミ」に分類された件数はいくつか。", type: "text", answer: "6" },
+            { chapter: 5, question: "与えられた混同行列で、クラス「ネコ」のAccuracy (%)はいくらか。", type: "text", answer: "94" },
+            { chapter: 5, question: "与えられた混同行列のモデルを改善するために最も有効と考えられるアプローチはどれか。", type: "choice", options: ["イヌとオオカミの学習用データを増やして再学習する。", "オオカミとネコの学習用データを増やして再学習する。", "ネコの学習用データを増やして再学習する。", "ネコとイヌの学習用データを増やして再学習する。"], answer: "イヌとオオカミの学習用データを増やして再学習する。" },
+            { chapter: 5, question: "学習用損失(Loss)と検証用損失(Test Loss)のグラフで、Lossが減少し続けているのにTest Lossが増加している場合、どのような状態を示しているか。", type: "text", answer: "過学習" },
+            { chapter: 5, question: "Transfer LearningおよびFine Tuningに関する説明として誤っているものはどれか。", type: "choice", options: ["Fine TuningはTransfer Learningの一手法である。", "Fine Tuningは学習済みモデルの中間層を新しいデータセットで再訓練する技術である。", "Fine Tuningは既存モデルに適合するように入力データを調整する技術である。", "Fine Tuningは限られたデータでも一定の性能を期待できる。"], answer: "Fine Tuningは既存モデルに適合するように入力データを調整する技術である。" },
+            { chapter: 5, question: "深層学習において損失関数の出力値Lの一般的な範囲はどれか。", type: "choice", options: ["-1.0 ≤ L ≤ 1.0", "0.0 ≤ L", "0.0 ≤ L ≤ 1.0", "L ≤ 0.0"], answer: "0.0 ≤ L" },
+            { chapter: 5, question: "スーパーのレシート分析で「曜日別の各商品の購入状況」を把握するには、「購入日、曜日」の他にどの情報が必要か。図から2つ選べ。③商品コード、④購入した商品の個数、⑤購入した商品の合計金額", type: "multiple_choice", options: ["商品コード", "購入した商品の個数", "購入した商品の合計金額"], answer: ["商品コード", "購入した商品の個数"] },
+            { chapter: 5, question: "ポイント会員情報とレシート情報を組み合わせた分析で得られない情報はどれか。", type: "choice", options: ["顧客が商品を購入した理由。", "繰り返し購入される傾向がある商品。", "商品を多く購入している顧客の年齢層。", "年齢や性別による来店時間帯の傾向。"], answer: "顧客が商品を購入した理由。" },
             // chapter 6 (14問)
-            { chapter: 6, question: "日本において1990年代まで広く使われていたワープロソフトの名称はどれか。 [cite: 32]", type: "choice", options: ["新太郎", "進次郎", "一太郎", "ATOK", "花子", "松", "桐"], answer: "一太郎" },
-            { chapter: 6, question: "次のうちIME (Input Method Editor) に該当しないものはどれか。すべて答えよ。 [cite: 32]", type: "multiple_choice", options: ["Google 日本語入力", "ATOK", "Microsoft IME", "Cortana", "Claude3"], answer: ["Cortana", "Claude3"] },
-            { chapter: 6, question: "日本語入力/変換の文脈でIMEとは何の略語か英語で答えよ。 [cite: 32]", type: "text", answer: "Input Method Editor" },
-            { chapter: 6, question: "WYSIWYGの一般的な「読み」をカタカナ6文字で答えよ。 [cite: 32]", type: "text", answer: "ウィジウィグ" },
-            { chapter: 6, question: "WYSIWYG は何の頭文字をとった略語か。 [cite: 32]", type: "choice", options: ["What You See Is What You Get", "Why You See Is Why You Go", "What You Seek Is What You Get", "What You See Is Where You Go"], answer: "What You See Is What You Get" },
-            { chapter: 6, question: "LaTeX の一般的な「読み」を答えよ(ただし、ラテックを除く)。 [cite: 32]", type: "text", answer: "ラテフ" },
-            { chapter: 6, question: "次のソフトウェアのうちWYSIWYGに非対応なものはどれか。 [cite: 33]", type: "choice", options: ["Microsoft Word", "Google ドキュメント", "LaTeX", "Adobe InDesign"], answer: "LaTeX" },
-            { chapter: 6, question: "ウェブでLaTeX形式の数式記述を可能にするJavaScriptライブラリはどれか。 [cite: 33]", type: "choice", options: ["jQuery", "ReactJS", "MathML", "MathJax", "Mathematica", "Wolfram"], answer: "MathJax" },
-            { chapter: 6, question: "文章作成の文脈において「字下げ」を意味する語はどれか。 [cite: 33]", type: "choice", options: ["タブ", "インデント", "アウトライン", "アンダースコア", "ハイフネーション"], answer: "インデント" },
-            { chapter: 6, question: "Wordの「変更履歴」機能で、添削前の報告書を表示したい場合、どのモードを選ぶべきか。 [cite: 33]", type: "choice", options: ["シンプルな変更履歴/コメント", "すべての変更履歴/コメント", "変更履歴/コメントなし", "初版"], answer: "初版" },
-            { chapter: 6, question: "Wordの「変更履歴」機能で、添削を完全に反映し、かつ添削箇所も把握したい場合、どのモードを選ぶべきか。 [cite: 34]", type: "choice", options: ["シンプルな変更履歴/コメント", "すべての変更履歴/コメント", "変更履歴/コメントなし", "初版"], answer: "シンプルな変更履歴/コメント" },
-            { chapter: 6, question: "集金シミュレーションで、手元の千円札の枚数が表1のように推移した。6人目の支払い後の手元の1万円札は何枚か。 [cite: 35, 36]", type: "text", answer: "5" },
-            { chapter: 6, question: "集金シミュレーションのグラフ(図3)に関する考察として最も適当なものはどれか。 [cite: 37, 38]", type: "choice", options: ["全員が一万円札で支払うケースはなかった。", "最後まで千円札が不足しなかったのは、全回数の1割以下である。", "別の乱数でもグラフはまったく同じになる。", "全員が千円札で支払ったケースが1回以上ある。"], answer: "最後まで千円札が不足しなかったのは、全回数の1割以下である。" },
-            { chapter: 6, question: "事前に千円札を20枚用意した場合、集金時に起こることがないケースはどれか。 [cite: 38]", type: "choice", options: ["最初の1人が千円札でも途中で不足するケース", "千円札をまったく使わず終えるケース", "千円札払いが5人で途中で不足するケース", "一万円札払いが8人で不足せず終えるケース"], answer: "千円札払いが5人で途中で不足するケース" },
+            { chapter: 6, question: "日本において1990年代まで広く使われていたワープロソフトの名称はどれか。", type: "choice", options: ["新太郎", "進次郎", "一太郎", "ATOK", "花子", "松", "桐"], answer: "一太郎" },
+            { chapter: 6, question: "次のうちIME (Input Method Editor) に該当しないものはどれか。すべて答えよ。", type: "multiple_choice", options: ["Google 日本語入力", "ATOK", "Microsoft IME", "Cortana", "Claude3"], answer: ["Cortana", "Claude3"] },
+            { chapter: 6, question: "日本語入力/変換の文脈でIMEとは何の略語か英語で答えよ。", type: "text", answer: "Input Method Editor" },
+            { chapter: 6, question: "WYSIWYGの一般的な「読み」をカタカナ6文字で答えよ。", type: "text", answer: "ウィジウィグ" },
+            { chapter: 6, question: "WYSIWYG は何の頭文字をとった略語か。", type: "choice", options: ["What You See Is What You Get", "Why You See Is Why You Go", "What You Seek Is What You Get", "What You See Is Where You Go"], answer: "What You See Is What You Get" },
+            { chapter: 6, question: "LaTeX の一般的な「読み」を答えよ(ただし、ラテックを除く)。", type: "text", answer: "ラテフ" },
+            { chapter: 6, question: "次のソフトウェアのうちWYSIWYGに非対応なものはどれか。", type: "choice", options: ["Microsoft Word", "Google ドキュメント", "LaTeX", "Adobe InDesign"], answer: "LaTeX" },
+            { chapter: 6, question: "ウェブでLaTeX形式の数式記述を可能にするJavaScriptライブラリはどれか。", type: "choice", options: ["jQuery", "ReactJS", "MathML", "MathJax", "Mathematica", "Wolfram"], answer: "MathJax" },
+            { chapter: 6, question: "文章作成の文脈において「字下げ」を意味する語はどれか。", type: "choice", options: ["タブ", "インデント", "アウトライン", "アンダースコア", "ハイフネーション"], answer: "インデント" },
+            { chapter: 6, question: "Wordの「変更履歴」機能で、添削前の報告書を表示したい場合、どのモードを選ぶべきか。", type: "choice", options: ["シンプルな変更履歴/コメント", "すべての変更履歴/コメント", "変更履歴/コメントなし", "初版"], answer: "初版" },
+            { chapter: 6, question: "Wordの「変更履歴」機能で、添削を完全に反映し、かつ添削箇所も把握したい場合、どのモードを選ぶべきか。", type: "choice", options: ["シンプルな変更履歴/コメント", "すべての変更履歴/コメント", "変更履歴/コメントなし", "初版"], answer: "シンプルな変更履歴/コメント" },
+            { chapter: 6, question: "集金シミュレーションで、手元の千円札の枚数が表1のように推移した。6人目の支払い後の手元の1万円札は何枚か。", type: "text", answer: "5" },
+            { chapter: 6, question: "集金シミュレーションのグラフ(図3)に関する考察として最も適当なものはどれか。", type: "choice", options: ["全員が一万円札で支払うケースはなかった。", "最後まで千円札が不足しなかったのは、全回数の1割以下である。", "別の乱数でもグラフはまったく同じになる。", "全員が千円札で支払ったケースが1回以上ある。"], answer: "最後まで千円札が不足しなかったのは、全回数の1割以下である。" },
+            { chapter: 6, question: "事前に千円札を20枚用意した場合、集金時に起こることがないケースはどれか。", type: "choice", options: ["最初の1人が千円札でも途中で不足するケース", "千円札をまったく使わず終えるケース", "千円札払いが5人で途中で不足するケース", "一万円札払いが8人で不足せず終えるケース"], answer: "千円札払いが5人で途中で不足するケース" },
             // chapter 7 (21問)
-            { chapter: 7, question: "特定のIDに対し総当たり的にパスワードを入力して不正アクセスを試みる攻撃を何というか。 [cite: 39]", type: "text", answer: "ブルートフォース" },
-            { chapter: 7, question: "パスワードを固定し総当たり的にIDを変えて不正アクセスを試みる攻撃を何というか。 [cite: 39]", type: "text", answer: "リバースブルートフォース" },
-            { chapter: 7, question: "2024年5月に改正され、通称「情プラ法」となった法律の正式名称は何か。 [cite: 39]", type: "text", answer: "情報流通プラットフォーム対処法" },
-            { chapter: 7, question: "出会い系サイト規制法(通称)で「児童」と定義されるのは何歳に満たない者か。 [cite: 39]", type: "text", answer: "18" },
-            { chapter: 7, question: "不正アクセス禁止法(通称)の第3条違反者への罰則は「懲役(①)年以下」または「罰金(②)万円以下」である。①②の数字を答えよ。 [cite: 39]", type: "text", answer: "①3, ②100" },
-            { chapter: 7, question: "インターネット上に一度公開した情報が完全に消えず、将来にわたり不利益を及ぼすリスクを何と呼ぶか。 [cite: 39]", type: "text", answer: "デジタルタトゥー" },
-            { chapter: 7, question: "キーボードから入力される全ての文字を盗聴、記録するソフトウェアやハードウェアを何というか。 [cite: 39]", type: "text", answer: "キーロガー" },
-            { chapter: 7, question: "ウィルス、ワーム、トロイの木馬などの悪意あるソフトウェアの総称は何か。 [cite: 39]", type: "text", answer: "マルウェア" },
-            { chapter: 7, question: "OSやアプリに存在し、攻撃者に悪用される可能性がある欠陥や設定ミスを何というか。漢字3文字で答えよ。 [cite: 39]", type: "text", answer: "脆弱性" },
-            { chapter: 7, question: "サイバーセキュリティの文脈で「脆弱性」の別名をカタカナで答えよ。 [cite: 40]", type: "text", answer: "セキュリティホール" },
-            { chapter: 7, question: "ユーザー側で既知の脆弱性を修正しセキュリティを強化するために行うべきことは何か。 [cite: 40]", type: "text", answer: "アップデート" },
-            { chapter: 7, question: "次の拡張子のうち、ダブルクリックするとマルウェア感染のリスクが高いものをすべて答えよ。①.ini ②.exe ③.rar ④.msi ⑤.bat ⑥.dat ⑦.dll ⑧.scr [cite: 40]", type: "multiple_choice", options: [".exe", ".msi", ".bat", ".scr"], answer: [".exe", ".msi", ".bat", ".scr"] },
-            { chapter: 7, question: "ネット上の誹謗中傷に対し、被害者が迅速に削除依頼や情報開示請求を行えるように定められた法律の通称は何か。 [cite: 40]", type: "text", answer: "情報流通プラットフォーム対処法" },
-            { chapter: 7, question: "ネット契約で、事業者が消費者の操作ミス防止措置を講じていない場合、消費者が契約を取り消せることを定めた法律の通称は何か。 [cite: 40]", type: "text", answer: "電子消費者契約法" },
-            { chapter: 7, question: "刑法のコンピュータウィルスに関する罪となる行為はどれか。 [cite: 40]", type: "choice", options: ["対策ソフト開発のため新しいウィルスを作成した。", "ウィルスメールと知らずに他者に転送した。", "発見したウィルスを対策組織へ提供した。", "他人が作成したウィルスを後日使用する目的で保管した。"], answer: "他人が作成したウィルスを後日使用する目的で保管した。" },
-            { chapter: 7, question: "特定の個人や組織を狙って行われるサイバー攻撃を何というか。漢字2文字で答えよ。 [cite: 41]", type: "text", answer: "標的" },
-            { chapter: 7, question: "Microsoft Word 2007以降で、マクロを含まない/含む文書の拡張子はそれぞれ何か。 [cite: 41]", type: "text", answer: "含まない:docx, 含む:docm" },
-            { chapter: 7, question: "Microsoft Excel 2007以降で、マクロを含まない/含む文書の拡張子はそれぞれ何か。 [cite: 41]", type: "text", answer: "含まない:xlsx, 含む:xlsm" },
-            { chapter: 7, question: "個人のデータがハッカーによって盗まれたり漏洩したりした状況を表すネットスラングはどれか。 [cite: 41]", type: "choice", options: ["Phished", "Pwned", "Spoofed", "Cracked", "Breached"], answer: "Pwned" },
-            { chapter: 7, question: "サイバーセキュリティにおける「フィッシング」の最も適切な説明はどれか。 [cite: 41]", type: "choice", options: ["感染PCへ指令を送り不正プログラムを実行させること", "金融機関などを装い偽サイトに誘導し個人情報を不正取得すること", "辞書を使いパスワードを割り出すこと", "複数PCから大量パケットを送りサーバ機能を停止させること"], answer: "金融機関などを装い偽サイトに誘導し個人情報を不正取得すること" },
-            { chapter: 7, question: "不正アクセス禁止法で規制される行為はどれか。 [cite: 41]", type: "choice", options: ["アクセスしただけで有料会員登録する仕組みをつくり料金を請求する", "プログラムで生成したアドレスに広告メールを送信する", "他人のカード情報を読み取り偽造カードで商品を購入する", "他人のIDとパスワードを無断で用いサイトにログインし購買履歴を閲覧する"], answer: "他人のIDとパスワードを無断で用いサイトにログインし購買履歴を閲覧する" }
+            { chapter: 7, question: "特定のIDに対し総当たり的にパスワードを入力して不正アクセスを試みる攻撃を何というか。", type: "text", answer: "ブルートフォース" },
+            { chapter: 7, question: "パスワードを固定し総当たり的にIDを変えて不正アクセスを試みる攻撃を何というか。", type: "text", answer: "リバースブルートフォース" },
+            { chapter: 7, question: "2024年5月に改正され、通称「情プラ法」となった法律の正式名称は何か。", type: "text", answer: "情報流通プラットフォーム対処法" },
+            { chapter: 7, question: "出会い系サイト規制法(通称)で「児童」と定義されるのは何歳に満たない者か。", type: "text", answer: "18" },
+            { chapter: 7, question: "不正アクセス禁止法(通称)の第3条違反者への罰則は「懲役(①)年以下」または「罰金(②)万円以下」である。①②の数字を答えよ。", type: "text", answer: "①3, ②100" },
+            { chapter: 7, question: "インターネット上に一度公開した情報が完全に消えず、将来にわたり不利益を及ぼすリスクを何と呼ぶか。", type: "text", answer: "デジタルタトゥー" },
+            { chapter: 7, question: "キーボードから入力される全ての文字を盗聴、記録するソフトウェアやハードウェアを何というか。", type: "text", answer: "キーロガー" },
+            { chapter: 7, question: "ウィルス、ワーム、トロイの木馬などの悪意あるソフトウェアの総称は何か。", type: "text", answer: "マルウェア" },
+            { chapter: 7, question: "OSやアプリに存在し、攻撃者に悪用される可能性がある欠陥や設定ミスを何というか。漢字3文字で答えよ。", type: "text", answer: "脆弱性" },
+            { chapter: 7, question: "サイバーセキュリティの文脈で「脆弱性」の別名をカタカナで答えよ。", type: "text", answer: "セキュリティホール" },
+            { chapter: 7, question: "ユーザー側で既知の脆弱性を修正しセキュリティを強化するために行うべきことは何か。", type: "text", answer: "アップデート" },
+            { chapter: 7, question: "次の拡張子のうち、ダブルクリックするとマルウェア感染のリスクが高いものをすべて答えよ。①.ini ②.exe ③.rar ④.msi ⑤.bat ⑥.dat ⑦.dll ⑧.scr", type: "multiple_choice", options: [".exe", ".msi", ".bat", ".scr"], answer: [".exe", ".msi", ".bat", ".scr"] },
+            { chapter: 7, question: "ネット上の誹謗中傷に対し、被害者が迅速に削除依頼や情報開示請求を行えるように定められた法律の通称は何か。", type: "text", answer: "情報流通プラットフォーム対処法" },
+            { chapter: 7, question: "ネット契約で、事業者が消費者の操作ミス防止措置を講じていない場合、消費者が契約を取り消せることを定めた法律の通称は何か。", type: "text", answer: "電子消費者契約法" },
+            { chapter: 7, question: "刑法のコンピュータウィルスに関する罪となる行為はどれか。", type: "choice", options: ["対策ソフト開発のため新しいウィルスを作成した。", "ウィルスメールと知らずに他者に転送した。", "発見したウィルスを対策組織へ提供した。", "他人が作成したウィルスを後日使用する目的で保管した。"], answer: "他人が作成したウィルスを後日使用する目的で保管した。" },
+            { chapter: 7, question: "特定の個人や組織を狙って行われるサイバー攻撃を何というか。漢字2文字で答えよ。", type: "text", answer: "標的" },
+            { chapter: 7, question: "Microsoft Word 2007以降で、マクロを含まない/含む文書の拡張子はそれぞれ何か。", type: "text", answer: "含まない:docx, 含む:docm" },
+            { chapter: 7, question: "Microsoft Excel 2007以降で、マクロを含まない/含む文書の拡張子はそれぞれ何か。", type: "text", answer: "含まない:xlsx, 含む:xlsm" },
+            { chapter: 7, question: "個人のデータがハッカーによって盗まれたり漏洩したりした状況を表すネットスラングはどれか。", type: "choice", options: ["Phished", "Pwned", "Spoofed", "Cracked", "Breached"], answer: "Pwned" },
+            { chapter: 7, question: "サイバーセキュリティにおける「フィッシング」の最も適切な説明はどれか。", type: "choice", options: ["感染PCへ指令を送り不正プログラムを実行させること", "金融機関などを装い偽サイトに誘導し個人情報を不正取得すること", "辞書を使いパスワードを割り出すこと", "複数PCから大量パケットを送りサーバ機能を停止させること"], answer: "金融機関などを装い偽サイトに誘導し個人情報を不正取得すること" },
+            { chapter: 7, question: "不正アクセス禁止法で規制される行為はどれか。", type: "choice", options: ["アクセスしただけで有料会員登録する仕組みをつくり料金を請求する", "プログラムで生成したアドレスに広告メールを送信する", "他人のカード情報を読み取り偽造カードで商品を購入する", "他人のIDとパスワードを無断で用いサイトにログインし購買履歴を閲覧する"], answer: "他人のIDとパスワードを無断で用いサイトにログインし購買履歴を閲覧する" }
         ];
 
         // --- DOM Elements ---
@@ -328,6 +331,7 @@
         const scorePercentage = document.getElementById('score-percentage');
         const scoreDetails = document.getElementById('score-details');
         const restartQuizBtn = document.getElementById('restart-quiz-btn');
+        const retryIncorrectBtn = document.getElementById('retry-incorrect-btn'); // Added
         const changeChapterBtn = document.getElementById('change-chapter-btn');
 
         // --- State ---
@@ -336,6 +340,7 @@
         let currentQuestionIndex = 0;
         let score = 0;
         let shuffledIndices = [];
+        let incorrectlyAnsweredIndices = []; // Added to track incorrect answers
 
         // --- Utility Functions ---
 
@@ -385,38 +390,57 @@
             });
             submitMultipleChoiceBtn.addEventListener('click', handleMultipleChoiceAnswer);
             restartQuizBtn.addEventListener('click', startQuiz);
+            retryIncorrectBtn.addEventListener('click', startIncorrectQuiz); // Added
             changeChapterBtn.addEventListener('click', resetToChapterSelection);
             backToSelectionBtn.addEventListener('click', resetToChapterSelection);
         }
 
-        /** Starts a new quiz session */
+        /** Starts a new quiz session from the chapter selection */
         function startQuiz() {
             currentChapter = chapterSelect.value;
             if (!currentChapter) return;
 
             currentQuizData = quizData.filter(q => q.chapter == currentChapter);
-            shuffledIndices = shuffleArray([...Array(currentQuizData.length).keys()]);
-
-            currentQuestionIndex = 0;
-            score = 0;
-
-            // Switch views
-            chapterSelectionDiv.classList.add('hidden');
-            resultArea.classList.add('hidden');
-            quizArea.classList.remove('hidden');
+            const allIndices = [...Array(currentQuizData.length).keys()];
+            incorrectlyAnsweredIndices = []; // Reset for a new full quiz
             
-            displayQuestion();
+            setupAndStartQuiz(allIndices, `定着確認 ${currentChapter}`);
         }
+        
+        /** Starts a new quiz with only the incorrectly answered questions */
+        function startIncorrectQuiz() {
+            const indicesToRetry = [...new Set(incorrectlyAnsweredIndices)];
+            incorrectlyAnsweredIndices = []; // Clear for the retry session
+            setupAndStartQuiz(indicesToRetry, `定着確認 ${currentChapter} (再挑戦)`);
+        }
+
+        /** Generic function to set up and start any quiz */
+        function setupAndStartQuiz(indices, title) {
+             shuffledIndices = shuffleArray(indices);
+             currentQuestionIndex = 0;
+             score = 0;
+
+             chapterDisplay.textContent = title;
+
+             // Switch views
+             resultArea.classList.add('hidden');
+             chapterSelectionDiv.classList.add('hidden');
+             quizArea.classList.remove('hidden');
+             
+             displayQuestion();
+        }
+
 
         /** Displays the current question based on its type */
         function displayQuestion() {
             resetQuestionUI();
-            const questionIndex = shuffledIndices[currentQuestionIndex];
-            const question = currentQuizData[questionIndex];
+            // Get the original index from the shuffled list
+            const originalQuestionIndex = shuffledIndices[currentQuestionIndex];
+            const question = currentQuizData[originalQuestionIndex];
 
-            questionCounter.textContent = `問題 ${currentQuestionIndex + 1} / ${currentQuizData.length}`;
-            chapterDisplay.textContent = `定着確認 ${question.chapter}`;
-            questionText.innerHTML = question.question; // Use innerHTML to render potential tags like <br>
+            questionCounter.textContent = `問題 ${currentQuestionIndex + 1} / ${shuffledIndices.length}`;
+            // chapterDisplay is set in setupAndStartQuiz
+            questionText.innerHTML = question.question;
 
             if (question.type === "choice") {
                 optionsContainer.classList.remove('hidden');
@@ -460,15 +484,13 @@
 
         // --- Answer Handling ---
         
-        /** Handles single choice button clicks */
         function handleSingleChoiceAnswer(selectedAnswer) {
-            const questionIndex = shuffledIndices[currentQuestionIndex];
-            const question = currentQuizData[questionIndex];
+            const originalQuestionIndex = shuffledIndices[currentQuestionIndex];
+            const question = currentQuizData[originalQuestionIndex];
             const isCorrect = normalizeText(selectedAnswer) === normalizeText(question.answer);
             
             showFeedback(isCorrect, question, selectedAnswer);
             
-            // Highlight correct/incorrect choices
             Array.from(optionsContainer.children).forEach(btn => {
                 if (normalizeText(btn.textContent) === normalizeText(question.answer)) {
                     btn.classList.add('correct');
@@ -478,24 +500,21 @@
             });
         }
         
-        /** Handles text input submission */
         function handleTextAnswer() {
-             const questionIndex = shuffledIndices[currentQuestionIndex];
-             const question = currentQuizData[questionIndex];
+             const originalQuestionIndex = shuffledIndices[currentQuestionIndex];
+             const question = currentQuizData[originalQuestionIndex];
              const userAnswer = textAnswerInput.value;
              const isCorrect = normalizeText(userAnswer) === normalizeText(question.answer);
              showFeedback(isCorrect, question);
         }
 
-        /** Handles multiple choice submission */
         function handleMultipleChoiceAnswer() {
-            const questionIndex = shuffledIndices[currentQuestionIndex];
-            const question = currentQuizData[questionIndex];
+            const originalQuestionIndex = shuffledIndices[currentQuestionIndex];
+            const question = currentQuizData[originalQuestionIndex];
             
             const selectedNodes = document.querySelectorAll('#multiple-choice-options input[type="checkbox"]:checked');
             const selectedAnswers = Array.from(selectedNodes).map(node => node.value);
 
-            // Sort both arrays to compare them regardless of order
             const sortedSelected = [...selectedAnswers].sort();
             const sortedCorrect = [...question.answer].sort();
             
@@ -503,7 +522,6 @@
 
             showFeedback(isCorrect, question, selectedAnswers);
 
-            // Highlight correct/incorrect choices
              Array.from(multipleChoiceOptions.children).forEach(div => {
                 const input = div.querySelector('input');
                 const label = div.querySelector('label');
@@ -519,21 +537,22 @@
         }
 
         /** Shows feedback after an answer is submitted */
-        function showFeedback(isCorrect, question, userAnswer = null) {
-            // Disable all inputs to prevent re-submission
+        function showFeedback(isCorrect, question) {
             disableAllInputs();
             
             if (isCorrect) {
                 score++;
-                feedbackText.textContent = '正解！ 🎉';
+                feedbackText.textContent = '正解！ �';
                 feedbackText.className = 'text-2xl font-bold mb-4 text-green-600';
             } else {
                 feedbackText.textContent = '不正解...';
                 feedbackText.className = 'text-2xl font-bold mb-4 text-red-600';
+                // Add the original index to the list of incorrect questions
+                const originalQuestionIndex = shuffledIndices[currentQuestionIndex];
+                incorrectlyAnsweredIndices.push(originalQuestionIndex);
             }
             feedbackArea.classList.remove('hidden');
 
-            // Construct and display explanation
             let explanationContent = question.explanation || '';
             if (!isCorrect) {
                 const correctAnswerText = Array.isArray(question.answer) ? question.answer.join(', ') : question.answer;
@@ -551,7 +570,6 @@
             nextQuestionBtn.focus();
         }
 
-        /** Disables all interactive elements in the quiz area */
         function disableAllInputs() {
              Array.from(optionsContainer.children).forEach(btn => btn.disabled = true);
              Array.from(multipleChoiceOptions.querySelectorAll('input')).forEach(input => input.disabled = true);
@@ -560,10 +578,9 @@
              textAnswerInput.disabled = true;
         }
 
-        /** Proceeds to the next question or shows results */
         function nextQuestion() {
             currentQuestionIndex++;
-            if (currentQuestionIndex < currentQuizData.length) {
+            if (currentQuestionIndex < shuffledIndices.length) {
                 displayQuestion();
             } else {
                 showResults();
@@ -575,32 +592,33 @@
             quizArea.classList.add('hidden');
             resultArea.classList.remove('hidden');
 
-            const percentage = currentQuizData.length > 0 ? Math.round((score / currentQuizData.length) * 100) : 0;
+            const totalQuestions = shuffledIndices.length;
+            const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
             scorePercentage.textContent = `${percentage}%`;
-            scoreDetails.textContent = `(${score} / ${currentQuizData.length} 問正解)`;
+            scoreDetails.textContent = `(${score} / ${totalQuestions} 問正解)`;
+            
+            // Show or hide the retry incorrect button
+            if (incorrectlyAnsweredIndices.length > 0) {
+                retryIncorrectBtn.classList.remove('hidden');
+            } else {
+                retryIncorrectBtn.classList.add('hidden');
+            }
         }
 
-        /** Resets the UI for a new question */
         function resetQuestionUI() {
-            // Clear dynamic content
             optionsContainer.innerHTML = '';
             multipleChoiceOptions.innerHTML = '';
-
-            // Hide all containers and feedback
             optionsContainer.classList.add('hidden');
             multipleChoiceContainer.classList.add('hidden');
             textInputContainer.classList.add('hidden');
             feedbackArea.classList.add('hidden');
             explanationArea.classList.add('hidden');
             nextQuestionBtn.classList.add('hidden');
-
-            // Re-enable inputs
             submitMultipleChoiceBtn.disabled = false;
             submitTextAnswerBtn.disabled = false;
             textAnswerInput.disabled = false;
         }
 
-        /** Returns the user to the initial chapter selection screen */
         function resetToChapterSelection() {
             quizArea.classList.add('hidden');
             resultArea.classList.add('hidden');
